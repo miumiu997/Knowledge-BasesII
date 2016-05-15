@@ -1,2 +1,2 @@
 # Knowledge-BasesII
-Segunda progra de bases 
+Segunda progra de bases con Hadoop
