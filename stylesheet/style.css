@@ -1,0 +1,68 @@
+body{ 
+    background: #ffcfea url(images/network2.jpg) no-repeat fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+} 
+
+.titleAwesome{   
+    font-size: 300%;
+    font-family: 'Montserrat', sans-serif; 
+}
+
+p{ 
+	font-size: 70px; 
+	font-family: 'Lobster', cursive; 
+	color: #00CED1; 
+	text-align: center;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+
+}
+
+#input{
+    width: 60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px olid #008CBA;
+    border-radius: 4px; 
+}
+
+.button {
+    background-color: #008CBA; /* Green */
+    border: none; 
+    border-radius: 4px;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button2:hover {
+    background-color: #0079a1; 
+    color: black; 
+    border: 2px solid #008CBA;
+}
+
+.button2{
+    background-color: #008CBA;
+    color: white;
+}
+
+.container{ 
+	text-align: center; 
+	margin-top: 250px;
+	background-color:rgba(0, 0, 0, 0.4);
+	max-width: 900px; 
+	min-height: 200px;
+	border-radius: px;
+}
+
+

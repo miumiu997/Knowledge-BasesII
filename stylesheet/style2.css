@@ -1,0 +1,97 @@
+#searchBoy{ 
+	background-color: #ADD8E6;
+}
+
+#title{  
+	margin-top: 10px;
+	font-size: 50px; 
+	font-family: 'Lobster', cursive; 
+	color: #00CED1; 
+	text-align: center;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+
+}
+
+#search{ 
+	width: 60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 4px; 
+}
+
+body{ 
+    background: #ffcfea url(images/blue.jpg) no-repeat fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+} 
+
+nav{ 
+	background-color: white;
+	background: white;
+}
+
+.navbar-default {
+  	background-color: white; 
+	background: white;
+    border-color: white;
+} 
+
+.ContainerTitle{ 
+	font-size:30px; 
+	color:black;
+}
+
+.link{ 
+	font-size:15px;  
+	color: #2E0E4B; 
+}
+
+p{
+	font-size: 15px;
+}
+
+.container{ 
+	background-color:rgba(128, 128, 128, 0.4); 
+	max-width: 400px;
+	max-height: 400px;
+
+}
+
+#squares .container{
+    display: block;
+    float: left;
+    width: 450px;
+    height: 400px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px; 
+
+} 
+
+.subContainer1{ 
+	min-height: 140px; 
+	max-height: 140px;
+}
+
+.subContainer2{ 
+	min-height: 60px; 
+	max-height: 60px;
+}
+
+.subContainer3{ 
+	min-height: 100px;
+	max-height: 100px;
+}
+
+.subContainer4{ 
+	min-height: 10px;
+	max-height: 10px;
+}
+
+.wordsFound{ 
+	font-weight: bold;
+	font-style: italic;
+}
