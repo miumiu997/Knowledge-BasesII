@@ -22,7 +22,7 @@ function getStartLinks($direction){
 function getHTML($url){
 	global $myfile;
 	$textoHTML = "{".$url."}";
-	fwrite($myfile, "{".$url."}");
+	//fwrite($myfile, "{".$url."}");
 	//create object
 	$arrContextOptions=array(
     "ssl"=>array(
@@ -40,7 +40,15 @@ function getHTML($url){
 		$title = $titles->item($i);
 			
 			//$textoHTML= $textoHTML."{".$title->nodeValue."}";
-			fwrite($myfile, "{".$title->nodeValue."}(~!~)");
+			$textotitle= split(" ", $title->nodeValue);
+			foreach ($textotitle as $word) {
+				if (strlen($word)>1 && strpos($word, "\n")==false) {
+				
+					//$textoHTML = $textoHTML."[title]"."{".$word."}";
+					fwrite($myfile,"{title}"."{".$word."}{".$url."}\n");
+
+				}
+			}
 	}
 	$spans = $xpath->evaluate("/html/body//span");
 	for ($i = 0; $i < $spans->length; $i++) {
@@ -48,10 +56,10 @@ function getHTML($url){
 			
 			$textoSpan= split(" ", $span->nodeValue);
 			foreach ($textoSpan as $word) {
-				if (strlen($word)>0) {
-
+				if (strlen($word)>1 && strpos($word, "\n")==false) {
+				
 					//$textoHTML = $textoHTML."[span]"."{".$word."}";
-					fwrite($myfile,"{span}"."{".$word."}(~!~)");
+					fwrite($myfile,"{span}"."{".$word."}{".$url."}\n");
 
 				}
 			}
@@ -62,10 +70,10 @@ function getHTML($url){
 			
 			$textoP = split(" ", $p->nodeValue);
 			foreach ($textoP as $word ) {
-				if (strlen($word)>0) {
+				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					//$textoHTML = $textoHTML."[p]"."{".$word."}";
-					fwrite($myfile,"{p}"."{".$word."}(~!~)");	
+					fwrite($myfile,"{p}"."{".$word."}{".$url."}\n");	
 				}
 			}
 	}
@@ -77,10 +85,10 @@ function getHTML($url){
 
 			$textoh1 = split(" ", $h1->nodeValue);
 			foreach ($textoh1 as $word) {
-				if (strlen($word)>0) {
+				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					//$textoHTML = $textoHTML."[h1]"."{".$word."}";
-					fwrite($myfile,"{h1}"."{".$word."}(~!~)");	
+					fwrite($myfile,"{h1}"."{".$word."}{".$url."}\n");	
 				}
 			}
 	}
@@ -90,10 +98,10 @@ function getHTML($url){
 			
 			$textoh2 = split(" ", $h2->nodeValue);
 			foreach ($textoh2 as $word) {
-				if (strlen($word)>0) {
+				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					//$textoHTML = $textoHTML."[h2]"."{".$word."}";
-					fwrite($myfile,"{h2}"."{".$word."}(~!~)");
+					fwrite($myfile,"{h2}"."{".$word."}{".$url."}\n");
 				}
 			}
 	}
@@ -102,10 +110,10 @@ function getHTML($url){
 		$h3 = $h3s->item($i);
 			$textoh3 = split(" ", $h3->nodeValue);
 			foreach ($textoh3 as $word) {
-				if (strlen($word)>0) {
+				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					//$textoHTML = $textoHTML."[h3]"."{".$word."}";
-					fwrite($myfile,"{h3}"."{".$word."}(~!~)");
+					fwrite($myfile,"{h3}"."{".$word."}{".$url."}\n");
 				}
 			}
 	}
@@ -114,10 +122,10 @@ function getHTML($url){
 		$h4 = $h4s->item($i);
 			$textoh4 = split(" ", $h4->nodeValue);
 			foreach ($textoh4 as $word) {
-				if (strlen($word)>0) {
+				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					//$textoHTML = $textoHTML."[h4]"."{".$word."}";
-					fwrite($myfile,"{h4}"."{".$word."}(~!~)");
+					fwrite($myfile,"{h4}"."{".$word."}{".$url."}\n");
 				}
 			}
 	}
@@ -126,10 +134,10 @@ function getHTML($url){
 		$h5 = $h5s->item($i);
 			$textoh5 = split(" ", $h5->nodeValue);
 			foreach ($textoh5 as $word) {
-				if (strlen($word)>0) {
+				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					//$textoHTML = $textoHTML."[h5]"."{".$word."}";
-					fwrite($myfile,"{h5}"."{".$word."}(~!~)");
+					fwrite($myfile,"{h5}"."{".$word."}{".$url."}\n");
 				}
 			}
 	}
@@ -138,10 +146,10 @@ function getHTML($url){
 		$h6 = $h6s->item($i);
 			$textoh6 = split(" ", $h6->nodeValue);
 			foreach ($textoh6 as $word) {
-				if (strlen($word)>0) {
+				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
-					fwrite($myfile,"{h6}"."{".$word."}(~!~)");
+					fwrite($myfile,"{h6}"."{".$word."}{".$url."}\n");
 				}
 			}
 	}
@@ -150,10 +158,10 @@ function getHTML($url){
 		$pre = $pres->item($i);
 			$textopre = split(" ", $pre->nodeValue);
 			foreach ($textopre as $word) {
-				if (strlen($word)>0) {
+				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					//$textoHTML = $textoHTML."[pre]"."{".$word."}";
-					fwrite($myfile,"{pre}"."{".$word."}(~!~)");
+					fwrite($myfile,"{pre}"."{".$word."}{".$url."}\n");
 				}
 			}
 	}
@@ -162,10 +170,10 @@ function getHTML($url){
 		$blockquote = $blockquotes->item($i);
 			$textoblockquote = split(" ", $blockquote->nodeValue);
 			foreach ($textoblockquote as $word) {
-				if (strlen($word)>0) {
+				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
-					fwrite($myfile,"{blockquote}"."{".$word."}(~!~)");
+					fwrite($myfile,"{blockquote}"."{".$word."}{".$url."}\n");
 				}
 			}
 	}
@@ -174,10 +182,10 @@ function getHTML($url){
 		$li = $lis->item($i);
 			$textoli = split(" ", $li->nodeValue);
 			foreach ($textoli as $word) {
-				if (strlen($word)>0) {
+				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
-					fwrite($myfile,"{li}"."{".$word."}(~!~)");
+					fwrite($myfile,"{li}"."{".$word."}{".$url."}\n");
 				}
 			}
 	}
@@ -186,10 +194,10 @@ function getHTML($url){
 		$dl = $dls->item($i);
 			$textodl = split(" ", $dl->nodeValue);
 			foreach ($textodl as $word) {
-				if (strlen($word)>0) {
+				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
-					fwrite($myfile,"{dl}"."{".$word."}(~!~)");
+					fwrite($myfile,"{dl}"."{".$word."}{".$url."}\n");
 				}
 			}
 	}
@@ -198,10 +206,10 @@ function getHTML($url){
 		$dd = $dds->item($i);
 			$textodd = split(" ", $dd->nodeValue);
 			foreach ($textodd as $word) {
-				if (strlen($word)>0) {
+				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
-					fwrite($myfile,"{dd}"."{".$word."}(~!~)");
+					fwrite($myfile,"{dd}"."{".$word."}{".$url."}\n");
 				}
 			}
 	}
@@ -210,10 +218,10 @@ function getHTML($url){
 		$figcaption = $figcaptions->item($i);
 			$textofigcaption = split(" ", $figcaption->nodeValue);
 			foreach ($textofigcaption as $word) {
-				if (strlen($word)>0) {
+				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
-					fwrite($myfile,"{figcaption}"."{".$word."}(~!~)");
+					fwrite($myfile,"{figcaption}"."{".$word."}{".$url."}\n");
 				}
 			}
 	}
@@ -222,10 +230,10 @@ function getHTML($url){
 		$em = $ems->item($i);
 			$textoem = split(" ", $em->nodeValue);
 			foreach ($textoem as $word) {
-				if (strlen($word)>0) {
+				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
-					fwrite($myfile,"{em}"."{".$word."}(~!~)");
+					fwrite($myfile,"{em}"."{".$word."}{".$url."}\n");
 				}
 			}
 	}
@@ -234,10 +242,10 @@ function getHTML($url){
 		$strong = $strongs->item($i);
 			$textostrong = split(" ", $strong->nodeValue);
 			foreach ($textostrong as $word) {
-				if (strlen($word)>0) {
+				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
-					fwrite($myfile,"{strong}"."{".$word."}(~!~)");
+					fwrite($myfile,"{strong}"."{".$word."}{".$url."}\n");
 				}
 			}
 	}
@@ -246,10 +254,10 @@ function getHTML($url){
 		$small = $smalls->item($i);
 			$textosmall = split(" ", $small->nodeValue);
 			foreach ($textosmall as $word) {
-				if (strlen($word)>0) {
+				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
-					fwrite($myfile,"{small}"."{".$word."}(~!~)");
+					fwrite($myfile,"{small}"."{".$word."}{".$url."}\n");
 				}
 			}
 	}
@@ -258,10 +266,10 @@ function getHTML($url){
 		$cite = $cites->item($i);
 			$textocite = split(" ", $cite->nodeValue);
 			foreach ($textocite as $word) {
-				if (strlen($word)>0) {
+				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
-					fwrite($myfile,"{cite}"."{".$word."}(~!~)");
+					fwrite($myfile,"{cite}"."{".$word."}{".$url."}\n");
 				}
 			}
 	}
