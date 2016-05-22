@@ -1,7 +1,7 @@
 <?php
 ini_set('display_errors', 'On');
 $arrayHTMLS = array();
-ini_set('memory_limit', '-1');
+ini_set('memory_limit', '-1'); 
 $myfile = fopen("answer.txt", "w");
 
 
@@ -42,8 +42,8 @@ function getHTML($url){
 			//$textoHTML= $textoHTML."{".$title->nodeValue."}";
 			$textotitle= split(" ", $title->nodeValue);
 			foreach ($textotitle as $word) {
-				if (strlen($word)>1 && strpos($word, "\n")==false) {
-				
+				if (strlen($word)>1 && strpos($word, "\n")==false) { 
+					$word = preg_replace("/\s|&nbsp;/",'',$word);
 					//$textoHTML = $textoHTML."[title]"."{".$word."}";
 					fwrite($myfile,"{title}"."{".$word."}{".$url."}\n");
 
@@ -57,7 +57,7 @@ function getHTML($url){
 			$textoSpan= split(" ", $span->nodeValue);
 			foreach ($textoSpan as $word) {
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
-				
+					$word = preg_replace("/\s|&nbsp;/",'',$word);
 					//$textoHTML = $textoHTML."[span]"."{".$word."}";
 					fwrite($myfile,"{span}"."{".$word."}{".$url."}\n");
 
@@ -72,6 +72,7 @@ function getHTML($url){
 			foreach ($textoP as $word ) {
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
+					$word = preg_replace("/\s|&nbsp;/",'',$word);
 					//$textoHTML = $textoHTML."[p]"."{".$word."}";
 					fwrite($myfile,"{p}"."{".$word."}{".$url."}\n");	
 				}
@@ -86,7 +87,8 @@ function getHTML($url){
 			$textoh1 = split(" ", $h1->nodeValue);
 			foreach ($textoh1 as $word) {
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
-
+					
+					$word = preg_replace("/\s|&nbsp;/",'',$word);
 					//$textoHTML = $textoHTML."[h1]"."{".$word."}";
 					fwrite($myfile,"{h1}"."{".$word."}{".$url."}\n");	
 				}
@@ -100,6 +102,7 @@ function getHTML($url){
 			foreach ($textoh2 as $word) {
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
+					$word = preg_replace("/\s|&nbsp;/",'',$word);
 					//$textoHTML = $textoHTML."[h2]"."{".$word."}";
 					fwrite($myfile,"{h2}"."{".$word."}{".$url."}\n");
 				}
@@ -112,6 +115,7 @@ function getHTML($url){
 			foreach ($textoh3 as $word) {
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
+					$word = preg_replace("/\s|&nbsp;/",'',$word);
 					//$textoHTML = $textoHTML."[h3]"."{".$word."}";
 					fwrite($myfile,"{h3}"."{".$word."}{".$url."}\n");
 				}
@@ -124,6 +128,7 @@ function getHTML($url){
 			foreach ($textoh4 as $word) {
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
+					$word = preg_replace("/\s|&nbsp;/",'',$word);
 					//$textoHTML = $textoHTML."[h4]"."{".$word."}";
 					fwrite($myfile,"{h4}"."{".$word."}{".$url."}\n");
 				}
@@ -136,6 +141,7 @@ function getHTML($url){
 			foreach ($textoh5 as $word) {
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
+					$word = preg_replace("/\s|&nbsp;/",'',$word);
 					//$textoHTML = $textoHTML."[h5]"."{".$word."}";
 					fwrite($myfile,"{h5}"."{".$word."}{".$url."}\n");
 				}
@@ -148,6 +154,7 @@ function getHTML($url){
 			foreach ($textoh6 as $word) {
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
+					$word = preg_replace("/\s|&nbsp;/",'',$word);
 					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
 					fwrite($myfile,"{h6}"."{".$word."}{".$url."}\n");
 				}
@@ -160,6 +167,7 @@ function getHTML($url){
 			foreach ($textopre as $word) {
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
+					$word = preg_replace("/\s|&nbsp;/",'',$word);
 					//$textoHTML = $textoHTML."[pre]"."{".$word."}";
 					fwrite($myfile,"{pre}"."{".$word."}{".$url."}\n");
 				}
@@ -172,7 +180,8 @@ function getHTML($url){
 			foreach ($textoblockquote as $word) {
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
-					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
+					$word = preg_replace("/\s|&nbsp;/",'',$word);
+					//$textoHTML = $textoHTML."[h6]"."{".$word."}"; 
 					fwrite($myfile,"{blockquote}"."{".$word."}{".$url."}\n");
 				}
 			}
@@ -184,6 +193,7 @@ function getHTML($url){
 			foreach ($textoli as $word) {
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
+					$word = preg_replace("/\s|&nbsp;/",'',$word);
 					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
 					fwrite($myfile,"{li}"."{".$word."}{".$url."}\n");
 				}
@@ -196,6 +206,7 @@ function getHTML($url){
 			foreach ($textodl as $word) {
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
+					$word = preg_replace("/\s|&nbsp;/",'',$word);
 					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
 					fwrite($myfile,"{dl}"."{".$word."}{".$url."}\n");
 				}
@@ -208,6 +219,7 @@ function getHTML($url){
 			foreach ($textodd as $word) {
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
+					$word = preg_replace("/\s|&nbsp;/",'',$word);
 					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
 					fwrite($myfile,"{dd}"."{".$word."}{".$url."}\n");
 				}
@@ -220,6 +232,7 @@ function getHTML($url){
 			foreach ($textofigcaption as $word) {
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
+					$word = preg_replace("/\s|&nbsp;/",'',$word);
 					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
 					fwrite($myfile,"{figcaption}"."{".$word."}{".$url."}\n");
 				}
@@ -232,6 +245,7 @@ function getHTML($url){
 			foreach ($textoem as $word) {
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
+					$word = preg_replace("/\s|&nbsp;/",'',$word);
 					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
 					fwrite($myfile,"{em}"."{".$word."}{".$url."}\n");
 				}
@@ -244,6 +258,7 @@ function getHTML($url){
 			foreach ($textostrong as $word) {
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
+					$word = preg_replace("/\s|&nbsp;/",'',$word);
 					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
 					fwrite($myfile,"{strong}"."{".$word."}{".$url."}\n");
 				}
@@ -256,6 +271,7 @@ function getHTML($url){
 			foreach ($textosmall as $word) {
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
+					$word = preg_replace("/\s|&nbsp;/",'',$word);
 					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
 					fwrite($myfile,"{small}"."{".$word."}{".$url."}\n");
 				}
@@ -268,6 +284,7 @@ function getHTML($url){
 			foreach ($textocite as $word) {
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
+					$word = preg_replace("/\s|&nbsp;/",'',$word);
 					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
 					fwrite($myfile,"{cite}"."{".$word."}{".$url."}\n");
 				}
