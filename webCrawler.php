@@ -1,5 +1,5 @@
 <?php
-
+ini_set('display_errors', 'On');
 $arrayHTMLS = array();
 ini_set('memory_limit', '-1');
 $myfile = fopen("answer.txt", "w");
@@ -21,8 +21,8 @@ function getStartLinks($direction){
 
 function getHTML($url){
 	global $myfile;
-	$textoHTML = "[".$url."]";
-	fwrite($myfile, "[".$url."]");
+	$textoHTML = "{".$url."}";
+	fwrite($myfile, "{".$url."}");
 	//create object
 	$arrContextOptions=array(
     "ssl"=>array(
@@ -39,8 +39,8 @@ function getHTML($url){
 
 		$title = $titles->item($i);
 			
-			//$textoHTML= $textoHTML."[".$title->nodeValue."]";
-			fwrite($myfile, "[".$title->nodeValue."](~!~)");
+			//$textoHTML= $textoHTML."{".$title->nodeValue."}";
+			fwrite($myfile, "{".$title->nodeValue."}(~!~)");
 	}
 	$spans = $xpath->evaluate("/html/body//span");
 	for ($i = 0; $i < $spans->length; $i++) {
@@ -50,8 +50,8 @@ function getHTML($url){
 			foreach ($textoSpan as $word) {
 				if (strlen($word)>0) {
 
-					//$textoHTML = $textoHTML."[span]"."[".$word."]";
-					fwrite($myfile,"[span]"."[".$word."](~!~)");
+					//$textoHTML = $textoHTML."[span]"."{".$word."}";
+					fwrite($myfile,"{span}"."{".$word."}(~!~)");
 
 				}
 			}
@@ -64,8 +64,8 @@ function getHTML($url){
 			foreach ($textoP as $word ) {
 				if (strlen($word)>0) {
 
-					//$textoHTML = $textoHTML."[p]"."[".$word."]";
-					fwrite($myfile,"[p]"."[".$word."](~!~)");	
+					//$textoHTML = $textoHTML."[p]"."{".$word."}";
+					fwrite($myfile,"{p}"."{".$word."}(~!~)");	
 				}
 			}
 	}
@@ -79,8 +79,8 @@ function getHTML($url){
 			foreach ($textoh1 as $word) {
 				if (strlen($word)>0) {
 
-					//$textoHTML = $textoHTML."[h1]"."[".$word."]";
-					fwrite($myfile,"[h1]"."[".$word."](~!~)");	
+					//$textoHTML = $textoHTML."[h1]"."{".$word."}";
+					fwrite($myfile,"{h1}"."{".$word."}(~!~)");	
 				}
 			}
 	}
@@ -92,8 +92,8 @@ function getHTML($url){
 			foreach ($textoh2 as $word) {
 				if (strlen($word)>0) {
 
-					//$textoHTML = $textoHTML."[h2]"."[".$word."]";
-					fwrite($myfile,"[h2]"."[".$word."](~!~)");
+					//$textoHTML = $textoHTML."[h2]"."{".$word."}";
+					fwrite($myfile,"{h2}"."{".$word."}(~!~)");
 				}
 			}
 	}
@@ -104,8 +104,8 @@ function getHTML($url){
 			foreach ($textoh3 as $word) {
 				if (strlen($word)>0) {
 
-					//$textoHTML = $textoHTML."[h3]"."[".$word."]";
-					fwrite($myfile,"[h3]"."[".$word."](~!~)");
+					//$textoHTML = $textoHTML."[h3]"."{".$word."}";
+					fwrite($myfile,"{h3}"."{".$word."}(~!~)");
 				}
 			}
 	}
@@ -116,8 +116,8 @@ function getHTML($url){
 			foreach ($textoh4 as $word) {
 				if (strlen($word)>0) {
 
-					//$textoHTML = $textoHTML."[h4]"."[".$word."]";
-					fwrite($myfile,"[h4]"."[".$word."](~!~)");
+					//$textoHTML = $textoHTML."[h4]"."{".$word."}";
+					fwrite($myfile,"{h4}"."{".$word."}(~!~)");
 				}
 			}
 	}
@@ -128,8 +128,8 @@ function getHTML($url){
 			foreach ($textoh5 as $word) {
 				if (strlen($word)>0) {
 
-					//$textoHTML = $textoHTML."[h5]"."[".$word."]";
-					fwrite($myfile,"[h5]"."[".$word."](~!~)");
+					//$textoHTML = $textoHTML."[h5]"."{".$word."}";
+					fwrite($myfile,"{h5}"."{".$word."}(~!~)");
 				}
 			}
 	}
@@ -140,11 +140,132 @@ function getHTML($url){
 			foreach ($textoh6 as $word) {
 				if (strlen($word)>0) {
 
-					//$textoHTML = $textoHTML."[h6]"."[".$word."]";
-					fwrite($myfile,"[h6]"."[".$word."](~!~)");
+					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
+					fwrite($myfile,"{h6}"."{".$word."}(~!~)");
 				}
 			}
 	}
+	$pres = $xpath->evaluate("/html/body//pre");
+	for ($i = 0; $i < $h6s->length; $i++) {
+		$pre = $pres->item($i);
+			$textopre = split(" ", $pre->nodeValue);
+			foreach ($textopre as $word) {
+				if (strlen($word)>0) {
+
+					//$textoHTML = $textoHTML."[pre]"."{".$word."}";
+					fwrite($myfile,"{pre}"."{".$word."}(~!~)");
+				}
+			}
+	}
+	$blockquotes = $xpath->evaluate("/html/body//blockquote");
+	for ($i = 0; $i < $blockquotes->length; $i++) {
+		$blockquote = $blockquotes->item($i);
+			$textoblockquote = split(" ", $blockquote->nodeValue);
+			foreach ($textoblockquote as $word) {
+				if (strlen($word)>0) {
+
+					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
+					fwrite($myfile,"{blockquote}"."{".$word."}(~!~)");
+				}
+			}
+	}
+	$lis = $xpath->evaluate("/html/body//li");
+	for ($i = 0; $i < $lis->length; $i++) {
+		$li = $lis->item($i);
+			$textoli = split(" ", $li->nodeValue);
+			foreach ($textoli as $word) {
+				if (strlen($word)>0) {
+
+					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
+					fwrite($myfile,"{li}"."{".$word."}(~!~)");
+				}
+			}
+	}
+	$dls = $xpath->evaluate("/html/body//dl");
+	for ($i = 0; $i < $dls->length; $i++) {
+		$dl = $dls->item($i);
+			$textodl = split(" ", $dl->nodeValue);
+			foreach ($textodl as $word) {
+				if (strlen($word)>0) {
+
+					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
+					fwrite($myfile,"{dl}"."{".$word."}(~!~)");
+				}
+			}
+	}
+	$dds = $xpath->evaluate("/html/body//dd");
+	for ($i = 0; $i < $dds->length; $i++) {
+		$dd = $dds->item($i);
+			$textodd = split(" ", $dd->nodeValue);
+			foreach ($textodd as $word) {
+				if (strlen($word)>0) {
+
+					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
+					fwrite($myfile,"{dd}"."{".$word."}(~!~)");
+				}
+			}
+	}
+	$figcaptions = $xpath->evaluate("/html/body//figcaption");
+	for ($i = 0; $i < $figcaptions->length; $i++) {
+		$figcaption = $figcaptions->item($i);
+			$textofigcaption = split(" ", $figcaption->nodeValue);
+			foreach ($textofigcaption as $word) {
+				if (strlen($word)>0) {
+
+					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
+					fwrite($myfile,"{figcaption}"."{".$word."}(~!~)");
+				}
+			}
+	}
+	$ems = $xpath->evaluate("/html/body//em");
+	for ($i = 0; $i < $ems->length; $i++) {
+		$em = $ems->item($i);
+			$textoem = split(" ", $em->nodeValue);
+			foreach ($textoem as $word) {
+				if (strlen($word)>0) {
+
+					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
+					fwrite($myfile,"{em}"."{".$word."}(~!~)");
+				}
+			}
+	}
+	$strongs = $xpath->evaluate("/html/body//strong");
+	for ($i = 0; $i < $strongs->length; $i++) {
+		$strong = $strongs->item($i);
+			$textostrong = split(" ", $strong->nodeValue);
+			foreach ($textostrong as $word) {
+				if (strlen($word)>0) {
+
+					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
+					fwrite($myfile,"{strong}"."{".$word."}(~!~)");
+				}
+			}
+	}
+	$smalls = $xpath->evaluate("/html/body//small");
+	for ($i = 0; $i < $smalls->length; $i++) {
+		$small = $smalls->item($i);
+			$textosmall = split(" ", $small->nodeValue);
+			foreach ($textosmall as $word) {
+				if (strlen($word)>0) {
+
+					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
+					fwrite($myfile,"{small}"."{".$word."}(~!~)");
+				}
+			}
+	}
+	$cites = $xpath->evaluate("/html/body//cite");
+	for ($i = 0; $i < $cites->length; $i++) {
+		$cite = $cites->item($i);
+			$textocite = split(" ", $cite->nodeValue);
+			foreach ($textocite as $word) {
+				if (strlen($word)>0) {
+
+					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
+					fwrite($myfile,"{cite}"."{".$word."}(~!~)");
+				}
+			}
+	}
+
 		
 		return $textoHTML;
 
@@ -230,5 +351,6 @@ function webCrawlerAux($arrayListaWeb){
 
 webCrawler("listaPaginas.txt",900000000000000000000);
 //get_links("http://resultados.as.com/resultados/ficha/deportista/casillas/390/");
+fclose("answer.txt");
 
 ?>
