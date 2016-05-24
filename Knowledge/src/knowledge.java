@@ -1,3 +1,4 @@
+
 import org.apache.*;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
@@ -24,7 +25,7 @@ public class knowledge {
 		job.setReducerClass(KnowledgeReducer.class);
 		
 		job.setOutputKeyClass(Text.class);
-		job.setOutputValueClass(Writable.class);
+		job.setOutputValueClass(Text.class);
 		
 		System.exit(job.waitForCompletion(true) ? 0 : 1);
 	}
