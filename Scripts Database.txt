@@ -1,0 +1,16 @@
+// Para conectarse a la base de datos desde consola:
+mysql -u root -p
+// en password ponen "cloudera" (sin comillas obvio)
+//Luego corren estos queries:
+CREATE DATABASE KNOWLEDGE;
+USE KNOWLEDGE;
+CREATE TABLE WordInURL(id Int(30) not null auto_increment, word varchar(50), url varchar(250), PRIMARY KEY (id));
+CREATE TABLE CountWordInURL(id Int(30) not null auto_increment, word varchar(50),url varchar(250), count varchar(250), PRIMARY KEY(id));
+CREATE TABLE CountWordTotal(id Int(30) not null auto_increment, word varchar(50),count varchar(250), PRIMARY KEY(id));
+
+// Si quieren ver las tablas creadas:
+SHOW TABLES;
+// Si quieren ver las Bases de datos creadas:
+SHOW DATABASES;
+// y pos guau....
+

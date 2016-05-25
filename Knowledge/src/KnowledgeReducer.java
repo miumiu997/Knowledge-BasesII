@@ -13,7 +13,7 @@ public class KnowledgeReducer extends Reducer<Text, Writable, Text, Writable> {
 	@Override
 	public void reduce(Text key, Iterable<Writable> values, Context context )throws IOException, InterruptedException
 	{	
-		/*
+		
 		//Punto 1
 		ArrayList<String> valuesList = new ArrayList<String>();
 		for(Writable value:values){
@@ -22,20 +22,11 @@ public class KnowledgeReducer extends Reducer<Text, Writable, Text, Writable> {
 				context.write(key,value);
 			}
 		}
-		*/
-		
 		
 		
 		/*
-		///Punto 3
-		int cantidadDeVecesGeneral =0;
-		for(Writable value:values){
-			cantidadDeVecesGeneral++;
-		}
-		context.write(key, new Text(Integer.toString(cantidadDeVecesGeneral)));
-		*/
-		
-		//<{llave}{url},5>
+		 
+		 //<{llave}{url},5>
 		
 		//Punto 2
 		
@@ -57,6 +48,19 @@ public class KnowledgeReducer extends Reducer<Text, Writable, Text, Writable> {
 			context.write(new Text(llave), new Text(valor));
 			
 			}
+		 
+		 */
+		
+		/*
+		///Punto 3
+		int cantidadDeVecesGeneral =0;
+		for(Writable value:values){
+			cantidadDeVecesGeneral++;
+		}
+		context.write(key, new Text(Integer.toString(cantidadDeVecesGeneral)));
+		*/
+		
+		
 		
 		}
 		
