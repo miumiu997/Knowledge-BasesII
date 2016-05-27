@@ -44,8 +44,8 @@ function getHTML($url){
 			foreach ($textotitle as $word) {
 				if (strlen($word)>1 && strpos($word, "\n")==false) { 
 					$word = preg_replace("/\s|&nbsp;/",'',$word);
-					//$textoHTML = $textoHTML."[title]"."{".$word."}";
-					fwrite($myfile,"{title}"."{".$word."}{".$url."}\n");
+					//$textoHTML = $textoHTML."[title]"."{".limpiarPalabra($word)."}";
+					fwrite($myfile,"{title}"."{".limpiarPalabra($word)."}{".$url."}\n");
 
 				}
 			}
@@ -58,8 +58,8 @@ function getHTML($url){
 			foreach ($textoSpan as $word) {
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 					$word = preg_replace("/\s|&nbsp;/",'',$word);
-					//$textoHTML = $textoHTML."[span]"."{".$word."}";
-					fwrite($myfile,"{span}"."{".$word."}{".$url."}\n");
+					//$textoHTML = $textoHTML."[span]"."{".limpiarPalabra($word)."}";
+					fwrite($myfile,"{span}"."{".limpiarPalabra($word)."}{".$url."}\n");
 
 				}
 			}
@@ -73,8 +73,8 @@ function getHTML($url){
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					$word = preg_replace("/\s|&nbsp;/",'',$word);
-					//$textoHTML = $textoHTML."[p]"."{".$word."}";
-					fwrite($myfile,"{p}"."{".$word."}{".$url."}\n");	
+					//$textoHTML = $textoHTML."[p]"."{".limpiarPalabra($word)."}";
+					fwrite($myfile,"{p}"."{".limpiarPalabra($word)."}{".$url."}\n");	
 				}
 			}
 	}
@@ -89,8 +89,8 @@ function getHTML($url){
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 					
 					$word = preg_replace("/\s|&nbsp;/",'',$word);
-					//$textoHTML = $textoHTML."[h1]"."{".$word."}";
-					fwrite($myfile,"{h1}"."{".$word."}{".$url."}\n");	
+					//$textoHTML = $textoHTML."[h1]"."{".limpiarPalabra($word)."}";
+					fwrite($myfile,"{h1}"."{".limpiarPalabra($word)."}{".$url."}\n");	
 				}
 			}
 	}
@@ -103,8 +103,8 @@ function getHTML($url){
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					$word = preg_replace("/\s|&nbsp;/",'',$word);
-					//$textoHTML = $textoHTML."[h2]"."{".$word."}";
-					fwrite($myfile,"{h2}"."{".$word."}{".$url."}\n");
+					//$textoHTML = $textoHTML."[h2]"."{".limpiarPalabra($word)."}";
+					fwrite($myfile,"{h2}"."{".limpiarPalabra($word)."}{".$url."}\n");
 				}
 			}
 	}
@@ -116,8 +116,8 @@ function getHTML($url){
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					$word = preg_replace("/\s|&nbsp;/",'',$word);
-					//$textoHTML = $textoHTML."[h3]"."{".$word."}";
-					fwrite($myfile,"{h3}"."{".$word."}{".$url."}\n");
+					//$textoHTML = $textoHTML."[h3]"."{".limpiarPalabra($word)."}";
+					fwrite($myfile,"{h3}"."{".limpiarPalabra($word)."}{".$url."}\n");
 				}
 			}
 	}
@@ -129,8 +129,8 @@ function getHTML($url){
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					$word = preg_replace("/\s|&nbsp;/",'',$word);
-					//$textoHTML = $textoHTML."[h4]"."{".$word."}";
-					fwrite($myfile,"{h4}"."{".$word."}{".$url."}\n");
+					//$textoHTML = $textoHTML."[h4]"."{".limpiarPalabra($word)."}";
+					fwrite($myfile,"{h4}"."{".limpiarPalabra($word)."}{".$url."}\n");
 				}
 			}
 	}
@@ -142,8 +142,8 @@ function getHTML($url){
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					$word = preg_replace("/\s|&nbsp;/",'',$word);
-					//$textoHTML = $textoHTML."[h5]"."{".$word."}";
-					fwrite($myfile,"{h5}"."{".$word."}{".$url."}\n");
+					//$textoHTML = $textoHTML."[h5]"."{".limpiarPalabra($word)."}";
+					fwrite($myfile,"{h5}"."{".limpiarPalabra($word)."}{".$url."}\n");
 				}
 			}
 	}
@@ -155,8 +155,8 @@ function getHTML($url){
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					$word = preg_replace("/\s|&nbsp;/",'',$word);
-					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
-					fwrite($myfile,"{h6}"."{".$word."}{".$url."}\n");
+					//$textoHTML = $textoHTML."[h6]"."{".limpiarPalabra($word)."}";
+					fwrite($myfile,"{h6}"."{".limpiarPalabra($word)."}{".$url."}\n");
 				}
 			}
 	}
@@ -168,8 +168,8 @@ function getHTML($url){
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					$word = preg_replace("/\s|&nbsp;/",'',$word);
-					//$textoHTML = $textoHTML."[pre]"."{".$word."}";
-					fwrite($myfile,"{pre}"."{".$word."}{".$url."}\n");
+					//$textoHTML = $textoHTML."[pre]"."{".limpiarPalabra($word)."}";
+					fwrite($myfile,"{pre}"."{".limpiarPalabra($word)."}{".$url."}\n");
 				}
 			}
 	}
@@ -181,8 +181,8 @@ function getHTML($url){
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					$word = preg_replace("/\s|&nbsp;/",'',$word);
-					//$textoHTML = $textoHTML."[h6]"."{".$word."}"; 
-					fwrite($myfile,"{blockquote}"."{".$word."}{".$url."}\n");
+					//$textoHTML = $textoHTML."[h6]"."{".limpiarPalabra($word)."}"; 
+					fwrite($myfile,"{blockquote}"."{".limpiarPalabra($word)."}{".$url."}\n");
 				}
 			}
 	}
@@ -194,8 +194,8 @@ function getHTML($url){
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					$word = preg_replace("/\s|&nbsp;/",'',$word);
-					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
-					fwrite($myfile,"{li}"."{".$word."}{".$url."}\n");
+					//$textoHTML = $textoHTML."[h6]"."{".limpiarPalabra($word)."}";
+					fwrite($myfile,"{li}"."{".limpiarPalabra($word)."}{".$url."}\n");
 				}
 			}
 	}
@@ -207,8 +207,8 @@ function getHTML($url){
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					$word = preg_replace("/\s|&nbsp;/",'',$word);
-					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
-					fwrite($myfile,"{dl}"."{".$word."}{".$url."}\n");
+					//$textoHTML = $textoHTML."[h6]"."{".limpiarPalabra($word)."}";
+					fwrite($myfile,"{dl}"."{".limpiarPalabra($word)."}{".$url."}\n");
 				}
 			}
 	}
@@ -220,8 +220,8 @@ function getHTML($url){
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					$word = preg_replace("/\s|&nbsp;/",'',$word);
-					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
-					fwrite($myfile,"{dd}"."{".$word."}{".$url."}\n");
+					//$textoHTML = $textoHTML."[h6]"."{".limpiarPalabra($word)."}";
+					fwrite($myfile,"{dd}"."{".limpiarPalabra($word)."}{".$url."}\n");
 				}
 			}
 	}
@@ -233,8 +233,8 @@ function getHTML($url){
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					$word = preg_replace("/\s|&nbsp;/",'',$word);
-					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
-					fwrite($myfile,"{figcaption}"."{".$word."}{".$url."}\n");
+					//$textoHTML = $textoHTML."[h6]"."{".limpiarPalabra($word)."}";
+					fwrite($myfile,"{figcaption}"."{".limpiarPalabra($word)."}{".$url."}\n");
 				}
 			}
 	}
@@ -246,8 +246,8 @@ function getHTML($url){
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					$word = preg_replace("/\s|&nbsp;/",'',$word);
-					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
-					fwrite($myfile,"{em}"."{".$word."}{".$url."}\n");
+					//$textoHTML = $textoHTML."[h6]"."{".limpiarPalabra($word)."}";
+					fwrite($myfile,"{em}"."{".limpiarPalabra($word)."}{".$url."}\n");
 				}
 			}
 	}
@@ -259,8 +259,8 @@ function getHTML($url){
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					$word = preg_replace("/\s|&nbsp;/",'',$word);
-					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
-					fwrite($myfile,"{strong}"."{".$word."}{".$url."}\n");
+					//$textoHTML = $textoHTML."[h6]"."{".limpiarPalabra($word)."}";
+					fwrite($myfile,"{strong}"."{".limpiarPalabra($word)."}{".$url."}\n");
 				}
 			}
 	}
@@ -272,8 +272,8 @@ function getHTML($url){
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					$word = preg_replace("/\s|&nbsp;/",'',$word);
-					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
-					fwrite($myfile,"{small}"."{".$word."}{".$url."}\n");
+					//$textoHTML = $textoHTML."[h6]"."{".limpiarPalabra($word)."}";
+					fwrite($myfile,"{small}"."{".limpiarPalabra($word)."}{".$url."}\n");
 				}
 			}
 	}
@@ -285,8 +285,8 @@ function getHTML($url){
 				if (strlen($word)>1 && strpos($word, "\n")==false) {
 
 					$word = preg_replace("/\s|&nbsp;/",'',$word);
-					//$textoHTML = $textoHTML."[h6]"."{".$word."}";
-					fwrite($myfile,"{cite}"."{".$word."}{".$url."}\n");
+					//$textoHTML = $textoHTML."[h6]"."{".limpiarPalabra($word)."}";
+					fwrite($myfile,"{cite}"."{".limpiarPalabra($word)."}{".$url."}\n");
 				}
 			}
 	}
@@ -374,8 +374,35 @@ function webCrawlerAux($arrayListaWeb){
 		
 }
 
+
+
 webCrawler("listaPaginas.txt",900000000000000000000);
 //get_links("http://resultados.as.com/resultados/ficha/deportista/casillas/390/");
 fclose("answer.txt");
+
+function limpiarPalabra($palabra){
+	$palabra = mb_strtoupper($palabra);
+	$size = strlen($palabra);
+	$i = 0;
+	while($i < $size){
+		if((ord($palabra[$i]) < 65 or ord($palabra[$i]) > 90) and (ord($palabra[$i]) < 48 or ord($palabra[$i]) > 57) ){
+			$palabra = str_replace($palabra[$i],"",$palabra);
+			$size = strlen($palabra);
+		}
+		else{
+			$i+=1;
+		}
+	}
+	return $palabra;
+}
+
+/*
+// Para pasar a mayúsculas
+$texto = strtoupper($texto)
+
+
+
+*/
+
 
 ?>
