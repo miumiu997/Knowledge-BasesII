@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 
 public class Writer {
@@ -15,7 +16,9 @@ public class Writer {
 	
 	public static void writeInDatabase(String File, int operation) throws IOException, SQLException{
 		BufferedReader bf = new BufferedReader(new FileReader(File));
+		ArrayList<String> arregloLineas = new ArrayList<String>();
 		String sCadena;
+		int contador = 0;
 	    // Definimos el driver y la url
 	    String sDriver = "com.mysql.jdbc.Driver";
 	    String sURL = "jdbc:mysql://localhost:3306/KNOWLEDGE";
@@ -47,32 +50,73 @@ public class Writer {
 			/*
 			 * 1. Por	cada	palabra	distinta,	¿Cuáles	sitios	web	la	contienen?
 			 * palabra	URl
+			 * palabra	url
 			 * */
 			while ((sCadena = bf.readLine())!=null) {	
-				String[] arregloElementos = sCadena.split("	");//El split lo hago con el caracter "tab"
-				String palabra = arregloElementos[0];
-				String url = arregloElementos[1];
-					if(palabra.length() > 0 && palabra.length() <50 && url.length() <250){
-					 try{
-					 stmt = con.prepareStatement("INSERT INTO WordInURL(word,url)VALUES (?,?)");
-					 stmt.setString(1,palabra);
-					 stmt.setString(2,url);
-					 stmt.executeUpdate();
-					 }catch(Exception ex){
-						 System.out.println("Me despiche");
-					 }
+				arregloLineas.add(sCadena.toString());
+				contador++;
+				if(contador ==100000){
+					System.out.println("===============LLEGUE A 1000 "+arregloLineas.size());
+					contador = 0;
+					for(String Cadena:arregloLineas){
+						String[] arregloElementos = Cadena.split("	");//El split lo hago con el caracter "tab"
+						String palabra = arregloElementos[0];
+						String url = arregloElementos[1];
+							if(palabra.length() > 0 && palabra.length() <50 && url.length() <250){
+							 try{
+							 stmt = con.prepareStatement("INSERT INTO WordInURL(word,url)VALUES (?,?)");
+							 stmt.setString(1,palabra);
+							 stmt.setString(2,url);
+							 stmt.executeUpdate();
+							 }catch(Exception ex){
+								 System.out.println("Me despiche");
+							 }
+						}
 					}
+					arregloLineas = new ArrayList<String>();
 				}
 			}
-		
-		else if(operation ==2){
 			
+			
+			}
+		
+		else if(operation ==2){ 
+			contador = 0;
 			/*
 			 * 2. Para	cada	palabra	distinta en	un	sitio	web,	¿Cuál	es	el	conteo	total	de	la	palabra?
-			 * 
+			 *
+			 *{llave}{url}	5 
 			 */
-			while ((sCadena = bf.readLine())!=null) {	
-				
+			while ((sCadena = bf.readLine())!=null) { 
+				arregloLineas.add(sCadena.toString());
+				contador++;  
+				if(contador == 100000){  
+					System.out.println("===============LLEGUE A 1000 "+arregloLineas.size()); 
+					contador = 0; 
+					
+					for(String Cadena:arregloLineas){
+						String[] arregloElementos = Cadena.split("	");
+						String llaveSucia = arregloElementos[0];
+						String valor = arregloElementos[1];
+						String palabra = llaveSucia.substring(1, llaveSucia.indexOf("}"));
+						String url = llaveSucia.substring(llaveSucia.indexOf("}")+2,llaveSucia.length()-1 );
+						// CountWordInURL(id Int(30) not null auto_increment, word varchar(50),url varchar(250), count varchar(250), PRIMARY KEY(id));
+						if(palabra.length() > 0 && palabra.length() <50 && url.length() <250){
+							 try{
+							 stmt = con.prepareStatement("INSERT INTO CountWordInURL(word,url,count)VALUES (?,?,?)");
+							 stmt.setString(1,palabra);
+							 stmt.setString(2,url);
+							 stmt.setString(3,valor);
+							 stmt.executeUpdate();
+							 }catch(Exception ex){
+								 System.out.println("Me despiche 2");
+							 }
+						}
+					}
+					arregloLineas = new ArrayList<String>();
+
+					
+				}
 			}
 		}
 		
@@ -80,16 +124,25 @@ public class Writer {
 			/*
 			3. Para	cada	palabra	distinta en	general,	¿Cuál	es	el	conteo	total	de	la	palabra?
 			 */
-			while ((sCadena = bf.readLine())!=null) {	
-				String[] arregloElementos = sCadena.split("	");//El split lo hago con el caracter "tab"
-				String palabra = arregloElementos[0];
-				String CantVeces = arregloElementos[1];
-
-				stmt = con.prepareStatement("INSERT INTO CountWordTotal(word,count)VALUES (?,?)");
-				stmt.setString(1,palabra);
-				stmt.setString(2,CantVeces);
-				stmt.executeUpdate();
+			while ((sCadena = bf.readLine())!=null) {
+				contador++;
+				arregloLineas.add(sCadena.toString());
+				if(contador == 100000){  
+					System.out.println("===============LLEGUE A 1000 "+arregloLineas.size()); 
+					contador = 0; 
+					
+					for(String Cadena:arregloLineas){
+					String[] arregloElementos = Cadena.split("	");//El split lo hago con el caracter "tab"
+					String palabra = arregloElementos[0];
+					String CantVeces = arregloElementos[1];
+	
+					stmt = con.prepareStatement("INSERT INTO CountWordTotal(word,count)VALUES (?,?)");
+					stmt.setString(1,palabra);
+					stmt.setString(2,CantVeces);
+					stmt.executeUpdate();
+					}
 				
+				}
 			}
 		}
 	}
