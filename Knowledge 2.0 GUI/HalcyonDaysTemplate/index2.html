@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Knowledge</title>
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:500,500italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+    <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      @import url(http://fonts.googleapis.com/css?family=Lato:200,500,450,700);
+      @import url(https://raw.github.com/FortAwesome/Font-Awesome/master/docs/assets/css/font-awesome.min.css);
+
+
+html { 
+  background: url(geo2.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow-y:scroll;
+}
+
+
+#wrap {
+  margin: 3px 6px;
+  display: inline-block;
+  height: 10px;
+  float: right;
+  padding: 0;
+  position: relative;
+  bottom: 45px;
+  margin-: 30px
+
+}
+
+input[type="text"] {
+  height: 50px;
+  font-size: 25px;
+  display: inline-block;
+  font-family: "Lato";
+  font-weight: 100;
+  border: none;
+  outline: none;
+  color: #fff;
+  padding: 3px;
+  padding-right: 60px;
+  width: 0px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(176 , 224 , 230 ,0.3);
+  z-index: 3;
+  transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
+  cursor: pointer;
+}
+
+input[type="text"]:focus:hover {
+  border-bottom: 1px solid #BBB;
+}
+
+input[type="text"]:focus {
+  width: 1230px;
+  padding-left: 50px;
+  z-index: 1;
+  border-bottom: 1px solid #BBB;
+  cursor: text;
+}
+
+input[type="submit"] {
+  height: 50px;
+  width: 44px;
+  display: inline-block;
+  color:red;
+  float: right;
+  background: url(lupa.png) center center no-repeat;
+  text-indent: -10000px;
+  border: none;
+  position: absolute;
+  top: 2px;
+  right: 10px;
+  z-index: 2;
+  cursor: pointer;
+  opacity: 0.4;
+  cursor: pointer;
+  transition: opacity .4s ease;
+}
+
+::-webkit-input-placeholder {
+    color:  rgba(0 , 0 , 0 ,0.6);
+    font-weight: bold;
+}
+:-moz-placeholder {
+    color: rgba(0 , 0 , 0 ,0.6);
+    font-weight: bold;
+}
+:-ms-input-placeholder {
+    color: rgba(0 , 0 , 0 ,0.6);
+    font-weight: bold;
+}
+
+input[type="submit"]:hover {
+  opacity: 0.8;
+}
+    </style>
+
+    
+        <script src="js/prefixfree.min.js"></script>
+
+    
+  </head>
+
+  <body>
+
+    <div id="wrap">
+      <form action="" autocomplete="on">
+      <input id="search" name="search" type="text" placeholder="What're we looking for ?"><input id="search_submit" value="Rechercher" type="submit">
+      </form>
+    </div>
+
+
+    <style>
+
+      .container{ 
+          background-color:rgba(255, 255, 255, 0.4); 
+          max-width: 400px;
+          max-height: 400px;
+          border-radius: 5px;
+          -moz-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+          -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          padding: 20px;
+          text-align: center;
+          -moz-box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+          display: flex;
+          transition: box-shadow .3s ease;
+
+        }
+
+      .container:active {
+        -moz-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+        -webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+      }
+
+      h1, h2, a, p {
+        color: black;
+        font-weight: 100;
+      }
+
+      .tinted h1, .tinted h2, .tinted a, .tinted p {
+        color: black;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+      }
+
+      h2 {
+        font-size: 14px;
+      }
+
+      p {
+        margin: 20px;
+      }
+      p.related {
+        font-weight: 700;
+        color: #444;
+      }
+      p.related a {
+        font-weight: 700;
+        text-decoration: none;
+      }
+      p.related a:hover {
+        text-decoration: underline;
+      }
+
+      #squares .container{
+          display: block;
+          float: left;
+          width: 450px;
+          height: 400px;
+          margin-left: 20px;
+          margin-top: 20px;
+          margin-bottom: 20px; 
+
+      } 
+
+      .subContainer1{ 
+        min-height: 140px; 
+        max-height: 140px;
+        font-family: 'Alegreya Sans SC', sans-serif;
+        font-size: 12px;
+
+      }
+
+      .subContainer2{ 
+        min-height: 60px; 
+        max-height: 60px;
+        font-family: 'Pompiere', cursive;
+        font-size: 20px;
+        }
+
+      .link{
+        color:#0000ff;
+        text-decoration:none
+       }
+
+      .link:hover {text-decoration:underline;}
+      
+
+      .subContainer3{ 
+        min-height: 90px;
+        max-height: 90px;
+        font-family: 'Josefin Sans', sans-serif;
+      }
+
+      .subContainer4{ 
+        min-height: 4px;
+        max-height: 4px;
+
+      }
+
+      .wordsFound{ 
+        border-bottom: 1px solid black;
+        border-top: 1px solid black;
+        font-weight: bold;
+        font-family: 'Slabo 27px', serif;
+      }
+
+      #space{
+        margin-bottom: 50px
+      }
+
+    </style>
+
+
+
+    <div id="squares">  
+      <div id = "space"><div>
+      <div class="container"> 
+        <div class="subContainer1">
+          <h1 class="ContainerTitle">10 Dog Breeds That Have The CUTEST Puppies - iHeartDogs.com</h1><br> 
+        </div> 
+        <div class="subContainer2">
+          <a class="link" href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=puppies">https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=puppies</a><br><br> 
+        </div>  
+        <div class="subContainer3">
+          <p>All puppies are cute, but some breeds have that extra “je ne sais quoi” that makes them irresistible. For this reason, some of these breeds are  popular in greeting ...</p> 
+        </div> 
+        <div class="subContainer4">
+          <p class="wordsFound">Words found: 10</p> 
+        </div> 
+      </div> 
+      <div class="container"> 
+        <div class="subContainer1">
+          <h1 class="ContainerTitle">Puppies - Ultimate Puppy Guide & Puppy Pictures! - Dogtime</h1><br> 
+        </div> 
+        <div class="subContainer2">
+          <a class="link" href="dogtime.com/puppies/255-puppies">dogtime.com/puppies/255-puppies</a><br><br> 
+        </div> 
+        <div class="subContainer3">
+          <p>All puppies are cute, but some breeds have that extra “je ne sais quoi” that makes them irresistible. For this reason, some of these breeds are  popular in greeting ...</p> 
+        </div>  
+        <div class="subContainer4"> 
+           <p class="wordsFound">Words found: 15</p> 
+        </div>
+      </div> 
+      <div class="container"> 
+        <div class="subContainer1">
+          <h1 class="ContainerTitle">10 Dog Breeds That Have The CUTEST Puppies - iHeartDogs.com</h1><br> 
+        </div> 
+        <div class="subContainer2">
+          <a class="link" href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=puppies">https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=puppies</a><br><br> 
+        </div>
+        <div class="subContainer3">
+          <p>All puppies are cute, but some breeds have that extra “je ne sais quoi” that makes them irresistible. For this reason, some of these breeds are  popular in greeting ...</p> 
+        </div>  
+        <div class="subContainer4"> 
+           <p class="wordsFound">Words found: 20</p> 
+        </div>
+      </div>  
+      <div class="container"> 
+        <div class="subContainer1">
+          <h1 class="ContainerTitle">10 Dog Breeds That Have The CUTEST Puppies - iHeartDogs.com</h1><br> 
+        </div> 
+        <div class="subContainer2">
+          <a class="link" href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=puppies">https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=puppies</a><br><br> 
+        </div>  
+        <div class="subContainer3">
+          <p>All puppies are cute, but some breeds have that extra “je ne sais quoi” that makes them irresistible. For this reason, some of these breeds are  popular in greeting ...</p> 
+        </div> 
+        <div class="subContainer4"> 
+           <p class="wordsFound">Words found: 25</p> 
+        </div>
+      </div> 
+    </div>
+
+
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="js/index.js"></script>  
+    
+  </body>
+</html>
