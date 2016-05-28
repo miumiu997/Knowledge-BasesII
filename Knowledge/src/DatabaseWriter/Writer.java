@@ -127,7 +127,7 @@ public class Writer {
 			while ((sCadena = bf.readLine())!=null) {
 				contador++;
 				arregloLineas.add(sCadena.toString());
-				if(contador == 100000){  
+				if(contador == 10000){  
 					System.out.println("===============LLEGUE A 1000 "+arregloLineas.size()); 
 					contador = 0; 
 					
@@ -135,13 +135,14 @@ public class Writer {
 					String[] arregloElementos = Cadena.split("	");//El split lo hago con el caracter "tab"
 					String palabra = arregloElementos[0];
 					String CantVeces = arregloElementos[1];
-	
-					stmt = con.prepareStatement("INSERT INTO CountWordTotal(word,count)VALUES (?,?)");
-					stmt.setString(1,palabra);
-					stmt.setString(2,CantVeces);
-					stmt.executeUpdate();
+						if(palabra.length() <= 50 ){
+							stmt = con.prepareStatement("INSERT INTO CountWordTotal(word,count)VALUES (?,?)");
+							stmt.setString(1,palabra);
+							stmt.setString(2,CantVeces);
+							stmt.executeUpdate();
+						}
 					}
-				
+					arregloLineas = new ArrayList<String>();
 				}
 			}
 		}
@@ -149,7 +150,7 @@ public class Writer {
 	public static void  main(String[] args){
 		
 		try {
-			writeInDatabase("/home/cloudera/Desktop/part-r-00000",1);
+			writeInDatabase("/home/cloudera/Desktop/part2",2);
 		} catch (IOException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

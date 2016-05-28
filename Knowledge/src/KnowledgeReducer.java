@@ -13,7 +13,7 @@ public class KnowledgeReducer extends Reducer<Text, Writable, Text, Writable> {
 	@Override
 	public void reduce(Text key, Iterable<Writable> values, Context context )throws IOException, InterruptedException
 	{	
-		/*
+		
 		//Punto 1
 		ArrayList<String> valuesList = new ArrayList<String>();
 		for(Writable value:values){
@@ -22,12 +22,12 @@ public class KnowledgeReducer extends Reducer<Text, Writable, Text, Writable> {
 				context.write(key,value);
 			}
 		}
-		*/
+		
 		
 		
 		 
 		 //<{llave}{url},5>
-		
+		/*
 		//Punto 2
 		
 		Map<String,Integer> diccionario  = new HashMap<String,Integer>();
@@ -49,7 +49,7 @@ public class KnowledgeReducer extends Reducer<Text, Writable, Text, Writable> {
 			
 			}
 		 
-		 
+		 */
 		
 		/*
 		///Punto 3
