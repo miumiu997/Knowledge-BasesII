@@ -3,7 +3,12 @@ ini_set('display_errors', 'On');
 $arrayHTMLS = array();
 ini_set('memory_limit', '-1'); 
 $myfile = fopen("answer.txt", "w");
+/*
 
+Script para crear la tabla titles:
+CREATE TABLE TITLES(id int(30) not null AUTO_INCREMENT,title varchar(300),url varchar(300),PRIMARY KEY(id));
+
+*/
 
 
 /*Funcion que recibe como parametro el lugar donde esta el archivo .txt y retorna la lista de sitios web separados por un  enter*/
@@ -16,7 +21,50 @@ function getStartLinks($direction){
 	fclose($myfile);
 	return $arrayTexto;
 }
+function saveTitles(){
+	$servername = "localhost"; 
+	$username = "root"; 
+	$password = "cloudera"; 
+	$db = "KNOWLEDGE";
+	$conn = new mysqli("localhost","root","cloudera", "KNOWLEDGE");
 
+	if ($conn->connect_error) {
+	    die("Connection failed: " . $conn->connect_error);
+	}
+	$query = "select url from CountWordInURL group by url" ;
+	$result = $conn->query($query); 
+
+	 while ($row = $result->fetch_assoc()){ 
+	 $url= $row["url"];
+	 $title = get_Title($url);
+	 //TITLES(id int(30) not null AUTO_INCREMENT,title varchar(300),url varchar(300),PRIMARY KEY(id))
+	 $query = "INSERT INTO TITLES(title,url) values('".$title."','".$url."');"; 
+		$conn->query($query);
+		
+	 }   
+}
+function get_Title($url){
+	
+	$arrContextOptions=array(
+    "ssl"=>array(
+        "verify_peer"=>false,
+        "verify_peer_name"=>false,
+    ));
+	$urlUsed = file_get_contents($url, false, stream_context_create($arrContextOptions));
+	$dom = new DOMDocument();
+	@$dom->loadHTML($urlUsed);
+	$xpath = new DOMXPath($dom);
+
+	$titles = $xpath->evaluate("/html//title");
+	for ($i = 0; $i < $titles->length; $i++) {
+
+		$title = $titles->item($i);
+		$title = $title->nodeValue;
+		
+
+	}
+	return $title;
+}
 
 
 function getHTML($url){
@@ -376,8 +424,9 @@ function webCrawlerAux($arrayListaWeb){
 
 
 
-webCrawler("listaPaginas.txt",900000000000000000000);
+//webCrawler("listaPaginas.txt",900000000000000000000);
 //get_links("http://resultados.as.com/resultados/ficha/deportista/casillas/390/");
+saveTitles();
 fclose("answer.txt");
 
 function limpiarPalabra($palabra){
