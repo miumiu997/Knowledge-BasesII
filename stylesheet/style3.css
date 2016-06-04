@@ -64,7 +64,7 @@ p{
     display: block;
     float: left;
     width: 450px;
-    height: 400px;
+    height: 350px;
     margin-left: 20px;
     margin-top: 20px;
     margin-bottom: 20px; 
@@ -72,8 +72,8 @@ p{
 } 
 
 .subContainer1{ 
-	min-height: 140px; 
-	max-height: 140px;
+	min-height: 160px; 
+	max-height: 160px;
 }
 
 .subContainer2{ 
@@ -82,8 +82,8 @@ p{
 }
 
 .subContainer3{ 
-	min-height: 100px;
-	max-height: 100px;
+	min-height: 20px;
+	max-height: 20px;
 }
 
 .subContainer4{ 

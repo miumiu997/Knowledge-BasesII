@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Case</title>
+  <title>Knowledge</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="stylesheet/style.css">
@@ -12,12 +12,14 @@
   <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  
+
+<form action="buscar.php" method="POST">
   <div class="container"> 
     <p>Knowledge</p> 
-    <input id="input" type="text"></input>
-    <button class="button button2" onclick="location.href = 'search.html';">Search</button><br>
-  </div>
+    <input name="input" id="input" type="text"></input>
+    <input type="submit" class="button button2" value="Search"/>
+  </div> 
+</form>
 
 
 </body>
